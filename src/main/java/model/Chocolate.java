@@ -29,4 +29,10 @@ public class Chocolate extends Product{
     public String use(){
         return "You ate the " + this.getProductName() + ".";
     }
+    @Override
+    public String toString() {
+        return "Chocolate: " +
+                "id is " + id +
+                ", price is " + price;
+    }
 }

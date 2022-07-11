@@ -31,4 +31,10 @@ public class Beer extends Product{
     public String use() {
         return "You drink the " + this.getProductName() + ".";
     }
+    @Override
+    public String toString() {
+        return "Beer: " +
+                "id is " + id +
+                ", price is " + price;
+    }
 }

@@ -45,22 +45,39 @@ public class VendingMachineImpl implements VendingMachine{
 
     @Override
     public Product request(int id) {
-        
+        for (Product product : productList) {
+            if (product.id == id && depositPool > product.getPrice())
+            {
+                depositPool -= product.getPrice();
+                purchasedItems.add(product);
+
+                return product;
+            }
+        }
+
         return null;
     }
 
     @Override
     public int endSession() {
-        return 0;
+        depositPool = 0;
+        return depositPool;
     }
 
     @Override
     public String getDescription(int id) {
+        for (Product product : productList) {
+            return product.toString();
+        }
         return null;
     }
 
     @Override
     public ArrayList<String> getProducts() {
-        return null;
+        ArrayList<String> itemInfo = new ArrayList<>();
+        for (Product purchasedItem : purchasedItems) {
+            itemInfo.add(purchasedItem.toString());
+        }
+        return itemInfo;
     }
 }
